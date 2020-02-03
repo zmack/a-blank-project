@@ -12,10 +12,11 @@ jobs:
   build: 
     docker: 
       - image: circleci/ruby:2.6.3-stretch-node
-        environment:
-          BUNDLER_VERSION: 2.0.1
     steps: 
       - checkout
+      - run:
+          name: Install bundler, I guess
+          command: gem install bundler
       - ruby/bundle-install
       - run:
           name: Run tests
